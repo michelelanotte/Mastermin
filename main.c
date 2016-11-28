@@ -1,4 +1,6 @@
-#include "interfaccia_grafica.h"
+#include "globali.h"
+#include "interfaccia.h"
+#include "operazioni.h"
 
 int main()
 {
@@ -35,3 +37,12 @@ int main()
   }while(risposta == 's');
   return 0;
 }
+
+
+
+
+
+
+
+
+

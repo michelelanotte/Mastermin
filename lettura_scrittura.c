@@ -1,3 +1,10 @@
+/*
+ * lettura_scrittura.c
+ *
+ *  Created on: 28 nov 2016
+ *      Author: Michele97
+ */
+
 #include "lettura_scrittura.h"
 
 void Scrivere_difficolta(int lunghezza, codice *codice_generato, codice *codice_utente)
@@ -39,4 +46,3 @@ int Leggere_difficolta(codice *codice_numerico)
 {
   return codice_numerico->lunghezza_codice;
 }
-

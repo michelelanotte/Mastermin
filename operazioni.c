@@ -1,4 +1,11 @@
-#include "valutazione.h"
+/*
+ * operazioni.c
+ *
+ *  Created on: 28 nov 2016
+ *      Author: Michele97
+ */
+
+#include "lettura_scrittura.h"
 
 void Generare_parola(codice *codice_generato)
 {

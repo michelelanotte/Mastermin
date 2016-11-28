@@ -1,4 +1,11 @@
-#include "interfaccia_grafica.h"
+/*
+ * interfaccia.c
+ *
+ *  Created on: 28 nov 2016
+ *      Author: Michele97
+ */
+
+#include "interfaccia.h"
 
 void Presentazione()
 {
@@ -122,6 +129,3 @@ void Chiedere_ammissione_doppioni(int *doppioni)
   }while((risposta != 's') && (risposta != 'n'));
   return;
 }
-
-
-

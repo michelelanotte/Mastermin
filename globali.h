@@ -1,7 +1,18 @@
+/*
+ * globali.h
+ *
+ *  Created on: 28 nov 2016
+ *      Author: Michele97
+ */
+
+#ifndef GLOBALI_H_
+#define GLOBALI_H_
+
+//-----------------------definizione delle costanti-----------------------
+
 #include<stdio.h>
 #include<stdlib.h>
 
-//-----------------------definizione delle costanti-----------------------
 #define LUNGHEZZA_MAX 8
 #define MAX_TENTATIVI 9
 #define VALMAX 9
@@ -18,3 +29,5 @@ typedef struct {
   int posizione_corretta;
   int posizione_sbagliata;
 }val;
+
+#endif /* GLOBALI_H_ */
