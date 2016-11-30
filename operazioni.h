@@ -1,14 +1,9 @@
-/*
- * operazioni.h
- *
- *  Created on: 28 nov 2016
- *      Author: Michele97
- */
-
 #ifndef OPERAZIONI_H_
 #define OPERAZIONI_H_
 
 #include<time.h>
+#include "lettura_scrittura.h"
+#include "interfaccia.h"
 
 void Generare_parola(codice *codice_generato);
 void Valutazione_parola(codice *codice_generato, codice *codice_utente, val *valutazione);

@@ -1,11 +1,4 @@
-/*
- * operazioni.c
- *
- *  Created on: 28 nov 2016
- *      Author: Michele97
- */
-
-#include "lettura_scrittura.h"
+#include "operazioni.h"
 
 void Generare_parola(codice *codice_generato)
 {
@@ -19,7 +12,7 @@ void Generare_parola(codice *codice_generato)
   while(i < Leggere_difficolta(codice_generato))
   {
 	do {
-       numero_generato = rand() % (VALMAX + VALMIN);  //tale istruzione genera un numero casuale che sia compreso tra VALMAX e VALMIN
+       numero_generato = rand() % (VALMAX + VALMIN );  //tale istruzione genera un numero casuale che sia compreso tra VALMAX e VALMIN
 	}while((doppioni == 0) && (Simbolo_presente(numero_generato, codice_generato, i)));
 	Scrivere_elemento(numero_generato, &*codice_generato, i);
 
@@ -31,33 +24,61 @@ void Generare_parola(codice *codice_generato)
   return;
 }
 
-
-
 void Valutazione_parola(codice *codice_generato, codice *codice_utente, val *valutazione)
 {
-  int i;
-  int posizione_corretta = 0;
-  int posizione_sbagliata = 0;
+  int i, j;
+  char simbolo_codice_utente, simbolo_codice_generato;
+  char valore_codice_utente, valore_codice_generato;
+  char corretto, presente;
+  codice temp_utente, temp_generato;
+
+  Inizializza_valutazione(valutazione);
+
+  corretto = 'c';
+  presente = 'p';
+  simbolo_codice_utente = -2;
+  simbolo_codice_generato = -1;
+
   i = 0;
-  while(i < Leggere_difficolta(codice_generato))
+  while(i < Leggere_difficolta(codice_generato))  //questo ciclo permette di individuare i numeri corretti che si trovano nel codice inserito da tastiera
   {
-    if(Leggere_elemento(codice_utente, i) == Leggere_elemento(codice_generato, i))
+	valore_codice_utente = Leggere_elemento(codice_utente, i);
+	valore_codice_generato = Leggere_elemento(codice_generato, i);
+    if(valore_codice_utente == valore_codice_generato)
     {
-      posizione_corretta = posizione_corretta + 1;
+      Scrivere_elemento(simbolo_codice_utente, &temp_utente, i);
+      Scrivere_elemento(simbolo_codice_generato, &temp_generato, i);
+      Scrivere_valutazione(corretto, valutazione, i);
     }
     else
     {
-      if(Simbolo_presente(Leggere_elemento(codice_utente, i), codice_generato, i))
-      {
-    	 posizione_sbagliata = posizione_sbagliata + 1;
-      }
+      Scrivere_elemento(valore_codice_utente, &temp_utente, i);
+      Scrivere_elemento(valore_codice_generato, &temp_generato, i);
     }
     i = i + 1;
   }
-  Scrivere_valutazione(posizione_corretta, posizione_sbagliata, &*valutazione);
+
+  //le istruzioni che seguono permettono di individuare i numeri del codice inserito da tastiera presenti nel codice generato
+  i = 0;
+  while(i < Leggere_difficolta(codice_utente))
+  {
+    j = 0;
+    while(j < Leggere_difficolta(codice_generato))
+    {
+      if(Leggere_elemento(&temp_utente, i) == Leggere_elemento(&temp_generato, j))
+      {
+        Scrivere_valutazione(presente, valutazione, i);
+        Scrivere_elemento(simbolo_codice_utente, &temp_utente, i);
+        Scrivere_elemento(simbolo_codice_generato, &temp_generato, j);
+      }
+      j = j + 1;
+    }
+    i = i + 1;
+  }
   return;
 }
 
+//questa funzione serve per controllare se il valore dato in input alla stessa è effettivamente presente nel codice generato
 int Simbolo_presente(int valore, codice *codice_generato, int posizione_elemento)
 {
   int i;
@@ -74,10 +95,11 @@ int Simbolo_presente(int valore, codice *codice_generato, int posizione_elemento
   return esito_ricerca;
 }
 
+//questa funzione controlla se la parola(codice) è stata indovinata(dunque il codice della valutazione avrà tutte le posizioni riempite con il carattere 'c'
 int Controllo_parole_uguali(val *valutazione, int lunghezza)
 {
   int esito = 0;
-  if(Leggere_valutazione_corretta(valutazione) == lunghezza)
+  if(Leggere_valutazione_corrette(valutazione) == lunghezza)
   {
     esito = 1;
   }
