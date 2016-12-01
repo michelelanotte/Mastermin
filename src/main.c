@@ -11,6 +11,7 @@ int main()
   char inizio;
   int tentativi;   //contatore dei tentativi
   int esito_parole_uguali = 0;
+  int contatore_tentativi;
   Presentazione();
   printf(" Premere INVIO per iniziare!");
   scanf("%c",&inizio);
@@ -18,7 +19,7 @@ int main()
   do {
 	Acquisire_difficolta_scelta(&codice_generato, &codice_utente, &valutazione, &tentativi);
     Generare_parola(&codice_generato);
-    int contatore_tentativi = 1;
+    contatore_tentativi = 1;
     do {
       printf("--------------------------------------------------------------------------");
       printf("\nTENTATIVO NUMERO: %d", contatore_tentativi);

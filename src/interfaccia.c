@@ -6,11 +6,11 @@ void Presentazione()
   char percorso[DIM_PERCORSO];
   char *percorso_file;
   percorso_file = getcwd(percorso, DIM_PERCORSO);
-  strcat(percorso_file, "\\regolamento.txt");
+  strcat(percorso_file, "\\..\\regolamento\\regolamento.txt");
   regolamento_gioco = fopen(percorso_file, "r");
   if(regolamento_gioco == NULL)
   {
-    printf("Errore! Impossibile leggere il regolamento di Mastermind");
+    printf("Errore! Impossibile leggere il regolamento di Mastermind!\n");
   }
   else{
     FILE *puntatore_nel_file = regolamento_gioco;
@@ -42,7 +42,7 @@ void Acquisire_difficolta_scelta(codice *codice_generato, codice *codice_utente,
   if(difficolta == 1)
   {
 	lunghezza = 4;
-	*tentativi = 8;
+	*tentativi = 9;
     Scrivere_difficolta(lunghezza, codice_generato, codice_utente, valutazione);
   }
   else
@@ -50,13 +50,13 @@ void Acquisire_difficolta_scelta(codice *codice_generato, codice *codice_utente,
     if(difficolta == 2)
      {
        lunghezza = 6;
-       *tentativi = 10;
+       *tentativi = 18;
        Scrivere_difficolta(lunghezza, codice_generato, codice_utente, valutazione);
      }
      else
      {
        lunghezza = 8;
-       *tentativi = 12;
+       *tentativi = 27;
        Scrivere_difficolta(lunghezza, codice_generato, codice_utente, valutazione);
      }
   }
@@ -93,8 +93,7 @@ void Acquisire_parola_utente(codice *codice_utente)
 {
   int i;
   int numero;
-  printf("\nInserire il codice da verificare(occorre inserire un numero per volta,\ndunque una volta inserito il primo numero,");
-  printf(" premere INVIO per inserire \nil secondo numero e cosi' via)\n");
+  printf("\nInserire il codice da verificare: \n");
   i = 0;
   while(i < Leggere_difficolta(codice_utente))
   {
@@ -116,7 +115,7 @@ void Stampa_esito(int esito_parole_uguali, int contatore_tentativi, int tentativ
 {
   if(esito_parole_uguali)
     {
-      printf("\nSEI RIUSCITO A TROVARE LA COMBINAZIONE GIUSTA! COMPLIMENTI!\n");
+      printf("\nSEI RIUSCITO A TROVARE LA COMBINAZIONE GIUSTA IN %d TENTATIVI! COMPLIMENTI!\n", contatore_tentativi - 1);
     }
     else
     {

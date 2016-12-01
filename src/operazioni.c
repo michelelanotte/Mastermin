@@ -14,7 +14,7 @@ void Generare_parola(codice *codice_generato)
 	do {
        numero_generato = rand() % (VALMAX + VALMIN );  //tale istruzione genera un numero casuale che sia compreso tra VALMAX e VALMIN
 	}while((doppioni == 0) && (Simbolo_presente(numero_generato, codice_generato, i)));
-	Scrivere_elemento(numero_generato, &*codice_generato, i);
+	Scrivere_elemento(numero_generato, codice_generato, i);
 
 	printf(" %d ", *(codice_generato->codice_gioco + i));
 
