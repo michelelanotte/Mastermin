@@ -27,19 +27,30 @@ void Presentazione()
 //questa funzione permette di scegliere la difficoltà del gioco che consiste nell'aumentare o nel ridurre la lunghezza del codice da indovinare
 void Acquisire_difficolta_scelta(codice *codice_generato, codice *codice_utente, val *valutazione, int *tentativi)
 {
-  int difficolta;
+  char difficolta[DIM_MAX];
+  int livello_difficolta;
   int lunghezza;
   do {
+	fflush(stdin);
     printf("\nInserire il numero corrispondente alla difficolta' desiderata: \n1.Facile \n");
     printf("2.Intermedio\n");
     printf("3.Difficile\n");
-    scanf("%d", &difficolta);
-    if(difficolta != 1 && difficolta != 2 && difficolta != 3)
+    scanf("%s", difficolta);
+    if(strlen(difficolta) == 1)
+    {
+      livello_difficolta = (int)*difficolta;  //livello_difficolta assumerà il valore ASCII del carattere inserito
+      if((livello_difficolta < 49) || (livello_difficolta > 51))  //49 è il codice ASCII di 1, 51 è il codice ASCII di 3
+      {
+        printf("\nErrore nella digitazione!\n");
+      }
+    }
+    else
     {
       printf("\nErrore nella digitazione!\n");
     }
-  }while(difficolta != 1 && difficolta != 2 && difficolta != 3);
-  if(difficolta == 1)
+  }while((livello_difficolta < 49) || (livello_difficolta > 51));
+  livello_difficolta = livello_difficolta - 48;  //sottraendo 48 al valore di livello_difficolta, si ricava un numero(1,2 0 3) corrispondente al livello scelto dall'utente
+  if(livello_difficolta == 1)
   {
 	lunghezza = 4;
 	*tentativi = 9;
@@ -47,7 +58,7 @@ void Acquisire_difficolta_scelta(codice *codice_generato, codice *codice_utente,
   }
   else
   {
-    if(difficolta == 2)
+    if(livello_difficolta == 2)
      {
        lunghezza = 6;
        *tentativi = 18;
@@ -93,19 +104,30 @@ void Acquisire_parola_utente(codice *codice_utente)
 {
   int i;
   int numero;
+  char numero_input[DIM_MAX];
   printf("\nInserire il codice da verificare: \n");
   i = 0;
   while(i < Leggere_difficolta(codice_utente))
   {
 	do {
       printf("%d. ", i + 1);
-      scanf("%d", &numero);
-      if(numero < 0 || numero > 9)
+      fflush(stdin);
+      scanf("%s", numero_input);
+      if(strlen(numero_input) == 1)
+      {
+        numero = (int)*numero_input;
+        if(numero < 48 || numero > 57)  //48 è il codice ASCII dello 0 mentre 57 è il codice ASCII di 9
+        {
+          printf("Errore! Inserire numero tra 0 e 9!\n");
+        }
+      }
+      else
       {
         printf("Errore! Inserire numero tra 0 e 9!\n");
       }
-	}while(numero < 0 || numero > 9);
-	Scrivere_elemento(numero, &*codice_utente, i);
+	}while(numero < 48 || numero > 57);
+    numero = numero - 48;
+	Scrivere_elemento(numero, codice_utente, i);
     i = i + 1;
   }
   return;

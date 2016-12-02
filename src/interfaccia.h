@@ -6,6 +6,7 @@
 #include "lettura_scrittura.h"
 
 #define DIM_PERCORSO 300
+#define DIM_MAX 10
 
 //prototipi delle funzioni che hanno a che fare con l'interfacciamento con l'utente
 void Presentazione();

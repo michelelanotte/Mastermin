@@ -44,12 +44,3 @@ int main()
   }while(risposta == 's');
   return 0;
 }
-
-
-
-
-
-
-
-
-

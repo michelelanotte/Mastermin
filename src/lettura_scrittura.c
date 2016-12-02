@@ -27,7 +27,7 @@ void Scrivere_valutazione(char elemento, val *valutazione, int posizione)
   return;
 }
 
-void Inizializza_valutazione(val * valutazione)
+void Inizializzare_valutazione(val * valutazione)
 {
   int i = 0;
   while(i < Leggere_difficolta_valutazione(valutazione))
@@ -43,7 +43,7 @@ int Leggere_elemento(codice *codice, int posizione)
   return *(codice->codice_gioco + posizione);
 }
 
-int Leggere_elemento_valutazione(val *valutazione, int posizione)
+char Leggere_elemento_valutazione(val *valutazione, int posizione)
 {
   return *(valutazione->codice + posizione);
 }

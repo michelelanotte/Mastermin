@@ -8,7 +8,7 @@
 
 #define LUNGHEZZA_MAX 8
 #define VALMAX 9
-#define VALMIN 1
+#define VALMIN 0
 
 
 //-----------------------definizione delle strutture-----------------------

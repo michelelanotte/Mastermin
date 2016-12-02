@@ -8,16 +8,12 @@ void Generare_parola(codice *codice_generato)
   Chiedere_ammissione_doppioni(&doppioni);
   srand(time(NULL));   //funzione della libreria time.h che permetterà in seguito di generare il codice da indovinare
   i = 0;
-  printf("\ncodice generato(codice da indovinare):");
   while(i < Leggere_difficolta(codice_generato))
   {
 	do {
        numero_generato = rand() % (VALMAX + VALMIN );  //tale istruzione genera un numero casuale che sia compreso tra VALMAX e VALMIN
 	}while((doppioni == 0) && (Simbolo_presente(numero_generato, codice_generato, i)));
 	Scrivere_elemento(numero_generato, codice_generato, i);
-
-	printf(" %d ", *(codice_generato->codice_gioco + i));
-
     i = i + 1;
   }
   printf("\n");
@@ -32,7 +28,7 @@ void Valutazione_parola(codice *codice_generato, codice *codice_utente, val *val
   char corretto, presente;
   codice temp_utente, temp_generato;
 
-  Inizializza_valutazione(valutazione);
+  Inizializzare_valutazione(valutazione);
 
   corretto = 'c';
   presente = 'p';
