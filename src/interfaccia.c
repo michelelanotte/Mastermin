@@ -133,8 +133,9 @@ void Acquisire_parola_utente(codice *codice_utente)
   return;
 }
 
-void Stampa_esito(int esito_parole_uguali, int contatore_tentativi, int tentativi)
+void Stampa_esito(int esito_parole_uguali, int contatore_tentativi, int tentativi, codice codice_generato)
 {
+  int i;
   if(esito_parole_uguali)
     {
       printf("\nSEI RIUSCITO A TROVARE LA COMBINAZIONE GIUSTA IN %d TENTATIVI! COMPLIMENTI!\n", contatore_tentativi - 1);
@@ -143,7 +144,15 @@ void Stampa_esito(int esito_parole_uguali, int contatore_tentativi, int tentativ
     {
       if(!(contatore_tentativi < tentativi))
       {
-        printf("\nNON SEI STATO FORTUNATO! NON SEI RIUSCITO A TROVARE LA COMBINAZIONE GIUSTA!\n");
+    	printf("--------------------------------------------------------------------------");
+    	printf("\nIl codice da indovinare era il seguente: \n");
+    	i = 0;
+    	while(i < Leggere_difficolta(&codice_generato))
+    	{
+    	  printf(" %d ", Leggere_elemento(&codice_generato, i));
+    	  i = i + 1;
+    	}
+        printf("\n\nNON SEI STATO FORTUNATO! NON SEI RIUSCITO A TROVARE LA COMBINAZIONE GIUSTA!\n");
       }
     }
   return;
@@ -152,8 +161,10 @@ void Stampa_esito(int esito_parole_uguali, int contatore_tentativi, int tentativ
 void Stampa_valutazione(val *valutazione)
 {
   int corretti, presenti;
-  corretti = Leggere_valutazione_corrette(valutazione);
-  Leggere_valutazione_presenti(valutazione, &presenti);
+  char corretto = 'c';
+  char presente = 'p';
+  corretti = Leggere_valutazioni(valutazione, corretto);
+  presenti = Leggere_valutazioni(valutazione, presente);
   printf("\n");
   printf("|  Numero di elementi in posizione corretta: %d   |\n", corretti);
   printf("|  Numero di elementi in posizione sbagliata: %d  |", presenti);

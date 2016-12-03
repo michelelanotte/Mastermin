@@ -29,8 +29,7 @@ int main()
       contatore_tentativi = contatore_tentativi + 1;
       Stampa_valutazione(&valutazione);
     }while(esito_parole_uguali != 1 && (contatore_tentativi <= tentativi));
-    system("cls");
-    Stampa_esito(esito_parole_uguali, contatore_tentativi, tentativi);
+    Stampa_esito(esito_parole_uguali, contatore_tentativi, tentativi, codice_generato);
     do {
       printf("\nVuoi riprovare a giocare? (s/n)");
       fflush(stdin);

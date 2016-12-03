@@ -58,32 +58,17 @@ int Leggere_difficolta_valutazione(val *valutazione)
   return valutazione->lunghezza_codice;
 }
 
-int Leggere_valutazione_corrette(val *valutazione)
+int Leggere_valutazioni(val *valutazione, char elemento)
 {
-  int corretti = 0;
+  int conteggio = 0;
   int i = 0;
   while(i < Leggere_difficolta_valutazione(valutazione))
   {
-    if(Leggere_elemento_valutazione(valutazione, i) == 'c')
+    if(Leggere_elemento_valutazione(valutazione, i) == elemento)
     {
-      corretti = corretti + 1;
+      conteggio = conteggio + 1;
     }
     i = i + 1;
   }
-  return corretti;
-}
-
-void Leggere_valutazione_presenti(val *valutazione, int *presenti)
-{
-  *presenti = 0;
-  int i = 0;
-  while(i < Leggere_difficolta_valutazione(valutazione))
-  {
-    if(Leggere_elemento_valutazione(valutazione, i) == 'p')
-    {
-      *presenti = *presenti + 1;
-    }
-    i = i + 1;
-  }
-  return;
+  return conteggio;
 }

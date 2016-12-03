@@ -20,7 +20,6 @@ int Leggere_elemento(codice *codice, int posizione);
 char Leggere_elemento_valutazione(val *valutazione, int posizione);
 int Leggere_difficolta(codice *codice_numerico);
 int Leggere_difficolta_valutazione(val *valutazione);
-int Leggere_valutazione_corrette(val *valutazione);
-void Leggere_valutazione_presenti(val *valutazione, int *presenti);
+int Leggere_valutazioni(val *valutazione, char elemento);
 
 #endif /* LETTURA_SCRITTURA_H_ */

@@ -95,7 +95,8 @@ int Simbolo_presente(int valore, codice *codice_generato, int posizione_elemento
 int Controllo_parole_uguali(val *valutazione, int lunghezza)
 {
   int esito = 0;
-  if(Leggere_valutazione_corrette(valutazione) == lunghezza)
+  char corretto = 'c';
+  if(Leggere_valutazioni(valutazione, corretto) == lunghezza)
   {
     esito = 1;
   }

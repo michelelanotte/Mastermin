@@ -14,6 +14,6 @@ void Acquisire_difficolta_scelta(codice *codice_generato, codice *codice_utente,
 void Chiedere_ammissione_doppioni(int *doppioni);
 void Acquisire_parola_utente(codice *codice_utente);
 void Stampa_valutazione(val *valutazione);
-void Stampa_esito(int esito_parole_uguali, int contatore_tentativi, int tentativi);
+void Stampa_esito(int esito_parole_uguali, int contatore_tentativi, int tentativi, codice codice_generato);
 
 #endif /* INTERFACCIA_H_ */
